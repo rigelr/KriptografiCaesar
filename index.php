@@ -41,7 +41,7 @@
   <div class="box box-info">
       
       <?php
-		$key=9;
+	// $key=9;
 	if(isset($_POST['submit1'])){
         // $key=3;
             function Cipher($ch, $key)
@@ -107,7 +107,13 @@
                   <label>Isi Teks</label>
                   <textarea name="plain" required="true" oninvalid="this.setCustomValidity('Masukan Text')" 
                                oninput="setCustomValidity('')" type="text" class="form-control" rows="2" placeholder="Isikan teks disini"></textarea>  
-                               <p style="text-align: left">*kunci=9</p>          
+                               <!-- <p style="text-align: left">*kunci=9</p>     -->
+                           
+                </div>
+                <div class="form-group">
+                  <label>Masukan Kunci</label>
+                  <input title="Pilih Key." required="true" oninvalid="this.setCustomValidity('Tidak boleh kosong!')" 
+                               oninput="setCustomValidity('')" type="number" class="form-control" name="kunci" placeholder="Masukan Kunci">
                 </div>
                 
                 </div>
@@ -125,15 +131,15 @@
                     <label>Teks Asli</label>
                     <table class="table table-bordered">
                         <tr style="background-color:#0b5d7a">
-                            <td style="text-align:center;color:white"><b><?php if (isset($_POST['submit1'])){ echo Decipher(Encipher($_POST['plain'],$key),$key);} 
-                            if (isset($_POST['submit2'])){ echo Encipher(Decipher($_POST['plain'], $key),$key);}?></b></td>
+                            <td style="text-align:center;color:white"><b><?php if (isset($_POST['submit1'])){ echo Decipher(Encipher($_POST['plain'],$_POST['kunci']),$_POST['kunci']);} 
+                            if (isset($_POST['submit2'])){ echo Encipher(Decipher($_POST['plain'],  $_POST['kunci']),$_POST['kunci']);}?></b></td>
                         </tr>
                     </table>
                   <label>Hasil Enkripsi</label>
                   <table class="table table-bordered">
                       <tr style="background-color:#0b5d7a">
-                          <td style="text-align:center;color:white"><b><?php if (isset($_POST['submit1'])){ echo Encipher($_POST['plain'],$key);} 
-                          if (isset($_POST['submit2'])){ echo Decipher($_POST['plain'], $key);}?></b></td>
+                          <td style="text-align:center;color:white"><b><?php if (isset($_POST['submit1'])){ echo Encipher($_POST['plain'],$_POST['kunci']);} 
+                          if (isset($_POST['submit2'])){ echo Decipher($_POST['plain'], $_POST['kunci']);}?></b></td>
                       </tr>
                   </table>
                   
